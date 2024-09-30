@@ -14,32 +14,33 @@
 
     function createLightbox()
     {
-        const lightbox = document.createElement('div');
-        lightbox.classList.add('lightbox');
-        document.body.appendChild(lightbox);
+        const container = document.createElement('div');
+        container.classList.add('lightbox');
+        document.body.appendChild(container);
 
-        const closeButton = document.createElement('div');
-        closeButton.classList.add('lightbox-close');
-        closeButton.innerHTML = '&times;';
-        lightbox.appendChild(closeButton);
+        const lightboxCloseButton = document.createElement('div');
+        lightboxCloseButton.classList.add('lightbox-button');
+
+        lightboxCloseButton.innerHTML = '&times;';
+        container.appendChild(lightboxCloseButton);
 
         const lightboxImage = document.createElement('img');
-        lightbox.appendChild(lightboxImage);
+        container.appendChild(lightboxImage);
 
-        closeButton.addEventListener('click', closeLightbox);
+        lightboxCloseButton.addEventListener('click', closeLightbox);
 
-        lightbox.addEventListener('click', (e) =>
+        container.addEventListener('click', (e) =>
         {
             closeLightbox();
         });
 
-        return lightbox;
+        return container;
     }
 
-    function openLightbox(imageSrc)
+    function openLightbox(image)
     {
         const lightboxImage = lightbox.querySelector('img');
-        lightboxImage.src = imageSrc;
+        lightboxImage.src = image;
         lightbox.style.display = 'flex';
     }
 
